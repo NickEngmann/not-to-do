@@ -1,0 +1,10 @@
+<input
+type="text"
+class="form-control"
+[(ngModel)]="listItemName">
+
+<button class="btn btn-primary"[disabled]="!newSession"
+  (click)="addList()">Add..</button>
+<li *ngFor="let listItemsName of listItems">
+  {{ listItemsName }} <button (click)="deleteItem(listItemsName)">X</button>
+</li>
