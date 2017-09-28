@@ -1,20 +1,19 @@
-<div class="paper">
-  <div class="lines">
-    <div class="text" contenteditable spellcheck="false">
-        <li *ngFor="let listItemsName of listItems">
-            {{ listItemsName }} <button (click)="deleteItem(listItemsName)">X</button>
-          </li>
-          
-          <input
-          type="text"
-          class="form-control"
-          [(ngModel)]="listItemName">
-          
-          <button class="btn btn-primary"[disabled]="!newSession"
-            (click)="addList()">Add..</button>  
-      </div>
-  <div class="holes hole-top"></div>
-  <div class="holes hole-middle"></div>
-  <div class="holes hole-bottom"></div>
-</div>
-
+  <div class="paper">
+    <div class="lines">
+      <div class="text" spellcheck="false">
+          <li *ngFor="let listItemsName of listItems">
+              {{ listItemsName }} <button class="delete" (click)="deleteItem(listItemsName)">X</button>
+            </li>
+          <form #form="ngForm" (ngSubmit)="addList()">
+            <input
+            required
+            [(ngModel)]="listItemName"
+            [ngModelOptions]="{standalone: true}">
+            
+            <button type="submit" class="add"><span>Click Enter to Add</span></button>
+          </form>  
+        </div>
+    <div class="holes hole-top"></div>
+    <div class="holes hole-middle"></div>
+    <div class="holes hole-bottom"></div>
+  </div>

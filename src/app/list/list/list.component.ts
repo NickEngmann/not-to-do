@@ -21,9 +21,9 @@ export class ListComponent implements OnInit {
   }
 
   addList() {
-    console.log(this.listItemName);
     this.listItems.push(this.listItemName);
-    this.listItemName='';
+    this.listItemName=undefined;
+    console.log(this.listItems);
   }
   deleteItem(listItemName){
     for(let i = 0; i<this.listItems.length;i++){

@@ -1,53 +1,63 @@
 
 @import url(https://fonts.googleapis.com/css?family=Indie+Flower);
 body {
-  margin: 0;
-  padding: 0;
   background: black;
+  text-align: left;
 }
+@media only screen and (min-width:320px){
+    .paper{
+        width: 95%;
+    }
+  }
+  
+@media only screen and (min-width:720px){
+    .paper {
+        width: 70%;
+    }
+}
+
 .paper {
-  position: absolute;
-  height: 550px;
-  width: 450px;
+  position: sticky;
+  height: 650px;
+  margin: 20px auto;
   background: rgba(255,255,255,0.9);
-  margin: -275px -225px;
-  left: 50%;
-  top: 40%;
-  box-shadow: 0px 0px 5px 0px #888;
+  box-shadow: 0px 0px 10px 0px #888;
 }
 .paper::before {
   content: '';
   position: absolute;
-  left: 45px;
+  left: 50px;
   height: 100%;
+  z-index: 1;
   width: 2px;
   background: rgba(255,0,0,0.4);
 }
 .lines {
-  margin-top: 40px;
+  margin-top: 45px;
+  position: absolute;
   height: calc(100% - 40px);
   width: 100%;
-  background-image: repeating-linear-gradient(white 0px, white 24px, steelblue 25px);
+  background-image: repeating-linear-gradient(white 0px, white 33px, steelblue 34px);
 }
 .text {
   position: absolute;
-  top: 65px;
-  left: 55px;
+  top: 34px;
+  left: 65px;
   bottom: 10px;
   right: 10px;
   line-height: 25px;
   font-family: 'Indie Flower';
-  overflow: hidden;
   outline: none;
+  text-align: left;
 }
 .holes {
   position: absolute;
   left: 10px;
-  height: 25px;
-  width: 25px;
+  height: 31px;
+  width: 31px;
   background: white;
   border-radius: 50%;
-  box-shadow: inset 0px 0px 2px 0px #888;
+  box-shadow: inset 0px 0px 6px 0px #888;
 }
 .hole-top {
   top: 10%;
@@ -59,14 +69,36 @@ body {
   bottom: 10%;
 }
 button{
-    font-family: 'Indie Flower'
+    font-family: 'Indie Flower';
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    outline: none;
+    font-size: 23px;    
 }
 li{
-    font-family: 'Indie Flower'
+    font-family: 'Indie Flower';
+    color: black;
+    text-decoration:line-through;
+    text-decoration-color: red;
+    font-size: 23px;
+    list-style-type: none
 }
 input{
-    font-family: 'Indie Flower'
+    font-family: 'Indie Flower';
+    color: black;
+    font-size: 23px;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    overflow: hidden;    
 }
 h1{
-    font-family: 'Indie Flower', cursive;
+    font-family: 'Indie Flower';
+}
+.add:hover{
+    text-decoration:line-through;
+    text-decoration-color: red;
+}
+.delete:hover{
+    color:red
 }
