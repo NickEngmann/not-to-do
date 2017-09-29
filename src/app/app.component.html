@@ -5,4 +5,8 @@
 <div style="text-align:center">
   <app-list></app-list>
 </div>
-
+<ul>
+    <li class="text" *ngFor="let item of items | async">
+      {{ item | json }}
+    </li>
+  </ul>
