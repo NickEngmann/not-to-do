@@ -1,3 +1,23 @@
-<p>
-  send-items works!
-</p>
+<div class="twilio">
+  <div *ngIf="!done">
+    <h1 class="instructions">Enter your phone number below to recieve weekly <span style="color: #ff0000">Not</span> to-do reminders</h1>
+    <form [formGroup]="numberForm" (ngSubmit)="updatePhoneNumber()" novalidate>
+      <input class="number" type="text" formControlName="country" placeholder="1">
+      <input class="number" type="text" formControlName="area" placeholder="916">
+      <input class="number" type="text" formControlName="prefix" placeholder="555">
+      <input class="number" type="text" formControlName="line" placeholder="5555">
+
+      <input *ngIf= "numberForm.valid && numberForm.touched" class="add" type="submit" value="Get SMS Updates" [disabled]="numberForm.invalid">
+    </form>
+
+    <!-- <div class="captcha g-recaptcha" data-sitekey="6LfyojIUAAAAACegv_9F7HV4gsNCmwdQaq_Uv9TJ"></div> -->
+    <re-captcha
+      (resolved)="resolved($event)"
+      siteKey="6LfyojIUAAAAACegv_9F7HV4gsNCmwdQaq_Uv9TJ"
+    ></re-captcha>
+    <p class="valid" *ngIf= "numberForm.invalid && numberForm.touched"> That's <span style="color: #ff0000">Not</span> a valid phone number</p>
+    <p class="valid" *ngIf= "numberForm.valid && numberForm.touched"> Click to Send!</p>
+  </div>
+  <h1 *ngIf="done" class="instructions">Your <span style="color: #ff0000">Not</span> to-do reminders have been sent to you!</h1>
+  <!-- <h3> Your <span style="color: #ff0000">Not</span> Have Been Sent To {{} pizza.phoneNumber | 'none' }}</h3> -->
+</div>

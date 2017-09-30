@@ -1,17 +1,21 @@
   <div class="paper">
     <div class="lines">
       <div class="text" spellcheck="false">
+        <div *ngIf="!sendingStatus">
           <li *ngFor="let listItemsName of listItems">
-              {{ listItemsName }} <button class="delete" (click)="deleteItem(listItemsName)">X</button>
-            </li>
-          <form #form="ngForm" (ngSubmit)="addList()">
-            <input
-            required
-            [(ngModel)]="listItemName"
-            [ngModelOptions]="{standalone: true}">
-            
-            <button type="submit" class="add"><span>Click Enter to Add</span></button>
-          </form>  
+                {{ listItemsName }} <button class="delete" (click)="deleteItem(listItemsName)">X</button>
+              </li>
+            <form #form="ngForm" (ngSubmit)="addList()">
+              <input
+              required
+              [(ngModel)]="listItemName"
+              [ngModelOptions]="{standalone: true}">
+              
+              <button type="submit" class="add"><span>Click Enter to Add</span></button>
+            </form>
+            <button *ngIf="updatedList" class="send add" (click)="changeLayout()">Click To Send To Yourself!</button>  
+          </div>
+          <app-send-items *ngIf="sendingStatus"></app-send-items>
         </div>
     <div class="holes hole-top"></div>
     <div class="holes hole-middle"></div>

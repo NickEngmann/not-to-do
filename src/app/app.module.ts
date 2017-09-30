@@ -9,8 +9,11 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-
+import { RecaptchaModule } from 'ng-recaptcha';
+import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 import { environment } from '../environments/environment';
+import { HelpComponent } from './head/help/help.component';
+import { ListService } from './list/list.service';
 
 @NgModule({
   imports: [
@@ -19,15 +22,18 @@ import { environment } from '../environments/environment';
     AngularFireDatabaseModule, // imports firebase/database, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RecaptchaFormsModule,
+    RecaptchaModule.forRoot(), // Keep in mind the "forRoot"-magic nuances!
   ],
   declarations: [
     AppComponent,
     ListItemComponent,
     ListComponent,
     SendItemsComponent,
+    HelpComponent,
   ],
-  providers: [],
+  providers: [ListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

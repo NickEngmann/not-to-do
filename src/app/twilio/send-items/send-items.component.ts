@@ -1,21 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { ListComponent } from '../../list/list/list.component';
+import { ListService } from '../../list/list.service';
+export interface FormModel {
+  captcha?: string;
+}
+
 @Component({
   selector: 'app-send-items',
   templateUrl: './send-items.component.html',
   styleUrls: ['./send-items.component.css']
 })
 export class SendItemsComponent implements OnInit {
-
+  public resolved(captchaResponse: string) {
+    console.log(`Resolved captcha with response ${captchaResponse}:`);
+  }
   numberForm: FormGroup;
-  order: any;
-
-  constructor( private db: AngularFireDatabase, private fb: FormBuilder) { }
+  list: any;
+  listKey: any;
+  listitems: any;
+  done = false;
+  constructor( private db: AngularFireDatabase, private fb: FormBuilder, private listservice: ListService ) { }
 
   ngOnInit() {
     this.buildForm()
-    this.order = this.db.object('/')
+    this.listKey = (Math.floor(Math.random() * (99000 + 1)) + 0)
+    this.list = this.db.object('/lists/'+this.listKey)
+    // this.list = this.db.object('/lists/const')
+    console.log(this.listKey)
+    this.list.update({
+      status: 'not-ready',
+      })
+  
   }
 
   validateMinMax(min,max){
@@ -41,6 +58,11 @@ export class SendItemsComponent implements OnInit {
     return `+${num}`
   }
   updatePhoneNumber(){
-    this.order.update({ phoneNumber: this.e164 })
+    this.listitems = this.listservice.getListArray()
+    this.list.update({
+      phoneNumber: this.e164,
+      status: 'ready',
+      listarr: this.listitems })
+    this.done = true;
   }
 }

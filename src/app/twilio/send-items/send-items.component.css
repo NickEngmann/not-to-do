@@ -1,0 +1,44 @@
+@import url(https://fonts.googleapis.com/css?family=Indie+Flower);
+body {
+    text-align: center;
+  }
+input{
+    font-family: 'Indie Flower';
+    color: black;
+    font-size: 20px;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    overflow: hidden;    
+}
+button{
+    font-family: 'Indie Flower';
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    outline: none;
+    font-size: 23px;    
+}
+.add:hover{
+    text-decoration:line-through;
+    text-decoration-color: red;
+}
+.twilio{
+    text-align: center;
+    margin: 0 auto;
+}
+.number{
+    width: 60px;
+}
+.valid{
+    font-family: 'Indie Flower';
+    font-size: 16px;    
+}
+.captcha{
+    margin: 0 auto;
+    text-align: -webkit-center;
+}
+.instructions{
+    font-family: 'Indie Flower';
+    color: black;
+    font-size: 23px;
+}

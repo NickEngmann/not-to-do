@@ -25,6 +25,8 @@
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "firebase": "^4.4.0",
+    "firebase-functions": "^0.6.3",
+    "ng-recaptcha": "^3.0.1",
     "rxjs": "^5.4.2",
     "twilio": "^3.7.0",
     "zone.js": "^0.8.14"

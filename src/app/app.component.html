@@ -1,12 +1,8 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <img width="380" src="./assets/not-todologo.png">
+  <img style="margin-top: -40px;"width="380" src="./assets/not-todologo.png">
 </div>
+<app-help></app-help>
 <div style="text-align:center">
   <app-list></app-list>
 </div>
-<ul>
-    <li class="text" *ngFor="let item of items | async">
-      {{ item | json }}
-    </li>
-  </ul>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ListService } from '../list.service';
 
 @Component({
   selector: 'app-list',
@@ -10,8 +11,9 @@ export class ListComponent implements OnInit {
   newSession = false;
   listItemName = 'Procrastinating';
   listItems = [];
-
-  constructor() {
+  updatedList = false;
+  sendingStatus = false;
+  constructor(private listservice: ListService) {
     setTimeout( ()=>{
       this.newSession=true;
     }, 2000);
@@ -19,11 +21,14 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  changeLayout(){
+    this.sendingStatus = true;
+  }
   addList() {
     this.listItems.push(this.listItemName);
     this.listItemName=undefined;
-    console.log(this.listItems);
+    this.updatedList = true;
+    this.listservice.updateListArray(this.listItems)
   }
   deleteItem(listItemName){
     for(let i = 0; i<this.listItems.length;i++){
@@ -31,5 +36,6 @@ export class ListComponent implements OnInit {
         this.listItems.splice(i,1);
       }
     }
+    this.listservice.updateListArray(this.listItems)
   }
 }
