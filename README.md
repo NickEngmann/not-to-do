@@ -1,14 +1,40 @@
 # NotToDo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.3.
+Too often people focus on what they need to do and they disregard what they do Not have to do. Not-todo is made exactly for that! Enter what you do Not need to do and have twilio send you weekly reminders!
 
+## Firebase
+
+To enable firebase create a directory named environments "not-to-do/environments" and create two files
+
+environment.prod.ts
+```
+export const environment = {
+    production: true,
+    firebase: {
+        apiKey: "{API_KEY}",
+        authDomain: "{APP ID}.firebaseapp.com",
+        databaseURL: "https://{APP ID}.firebaseio.com",
+        projectId: "{APP ID}",
+        storageBucket: "{APP ID}.appspot.com"
+    }
+};
+```
+environment.ts 
+```
+export const environment = {
+    production: false,
+    firebase: {
+        apiKey: "{API_KEY}",
+        authDomain: "{APP ID}.firebaseapp.com",
+        databaseURL: "https://{APP ID}.firebaseio.com",
+        projectId: "{APP ID}",
+        storageBucket: "{APP ID}.appspot.com"
+    }
+};
+```
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
