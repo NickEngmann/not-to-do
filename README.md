@@ -12,10 +12,10 @@ export const environment = {
     production: true,
     firebase: {
         apiKey: "{API_KEY}",
-        authDomain: "{APP ID}.firebaseapp.com",
-        databaseURL: "https://{APP ID}.firebaseio.com",
-        projectId: "{APP ID}",
-        storageBucket: "{APP ID}.appspot.com"
+        authDomain: "{PROJECT-ID}.firebaseapp.com",
+        databaseURL: "https://{PROJECT-ID}.firebaseio.com",
+        projectId: "{PROJECT-ID}",
+        storageBucket: "{PROJECT-ID}.appspot.com"
     }
 };
 ```
@@ -25,16 +25,38 @@ export const environment = {
     production: false,
     firebase: {
         apiKey: "{API_KEY}",
-        authDomain: "{APP ID}.firebaseapp.com",
-        databaseURL: "https://{APP ID}.firebaseio.com",
-        projectId: "{APP ID}",
-        storageBucket: "{APP ID}.appspot.com"
+        authDomain: "{PROJECT-ID}.firebaseapp.com",
+        databaseURL: "https://{PROJECT-ID}.firebaseio.com",
+        projectId: "{PROJECT-ID}",
+        storageBucket: "{PROJECT-ID}.appspot.com"
     }
 };
 ```
+
+You can get all the awbove information from the Firebase development console of your Firebase project.
+
+## Twilio
+Initialize Firebase Cloud Functions
+
+If you’re not already using Firebase Cloud Functions, you can get started by running:
+
+`firebase init functions`
+
+Then we will add the Twilio API key to the cloud function environment.
+
+`firebase functions:config:set twilio.sid="YOUR_ACCOUNT_SID" twilio.token="YOUR_AUTH_TOKEN"`
+
+Make sure you are in the functions directory, then install the twilio helper for NodeJS.
+
+```
+cd functions
+npm install twilio --save
+```
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+You also have to run `firebase deploy --only functions` in order to update your firebase function server.
 
 ## Build
 
