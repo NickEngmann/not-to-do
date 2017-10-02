@@ -7,6 +7,8 @@ export interface FormModel {
   captcha?: string;
 }
 
+declare var grecaptcha;
+
 @Component({
   selector: 'app-send-items',
   templateUrl: './send-items.component.html',
@@ -20,10 +22,13 @@ export class SendItemsComponent implements OnInit {
   list: any;
   listKey: any;
   listitems: any;
+  token: any;
   done = false;
   constructor( private db: AngularFireDatabase, private fb: FormBuilder, private listservice: ListService ) { }
 
   ngOnInit() {
+    this.scriptadd();
+    window['onloadCallback'] = this.onloadCallback.bind(this);
     this.buildForm()
     this.listKey = (Math.floor(Math.random() * (99000 + 1)) + 0)
     this.list = this.db.object('/lists/'+this.listKey)
@@ -34,6 +39,26 @@ export class SendItemsComponent implements OnInit {
       })
   
   }
+
+  scriptadd(){
+    const doc = document.body;
+    const script = document.createElement('script');
+    script.src = 'https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit';
+    script.async = true;
+    script.defer = true;
+    doc.appendChild(script);
+  }
+  onloadCallback() {
+    grecaptcha.render('submit', {
+      'sitekey' : '6LfyojIUAAAAACegv_9F7HV4gsNCmwdQaq_Uv9TJ',
+      'callback' : this.onSubmit
+    });
+  }
+  
+  onSubmit(token) {
+    grecaptcha.reset();
+    console.log('success!');
+  };
 
   validateMinMax(min,max){
     return['',[
@@ -57,6 +82,7 @@ export class SendItemsComponent implements OnInit {
     const num = form.country + form.area + form.prefix + form.line
     return `+${num}`
   }
+
   updatePhoneNumber(){
     this.listitems = this.listservice.getListArray()
     this.list.update({
