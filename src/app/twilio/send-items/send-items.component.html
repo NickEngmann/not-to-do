@@ -6,7 +6,9 @@
       <input class="number" type="text" formControlName="area" placeholder="916">
       <input class="number" type="text" formControlName="prefix" placeholder="555">
       <input class="number" type="text" formControlName="line" placeholder="5555">
-      <input id ="submit" *ngIf= "numberForm.valid && numberForm.touched" class="add captcha g-recaptcha" type="submit" value="Get SMS Updates" data-sitekey="6LfyojIUAAAAACegv_9F7HV4gsNCmwdQaq_Uv9TJ" [disabled]="numberForm.invalid">
+      <!-- <iframe *ngIf= "numberForm.valid && numberForm.touched" style="margin-top:10px" src="https://www.google.com/recaptcha/api2/anchor?k=6LfyojIUAAAAACegv_9F7HV4gsNCmwdQaq_Uv9TJ&amp;co=aHR0cDovL2xvY2FsaG9zdDo0MjAw&amp;hl=en&amp;v=r20170925162623&amp;size=normal&amp;cb=3dj0w3qpm7ch" title="recaptcha widget" width="304" height="78" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe> -->
+      <!-- <div class="g-recaptcha" data-sitekey="6LfyojIUAAAAACegv_9F7HV4gsNCmwdQaq_Uv9TJ"></div> -->
+      <input *ngIf= "numberForm.valid && numberForm.touched" class="add" type="submit" value="Get SMS Updates" [disabled]="numberForm.invalid">
     </form>
     <p class="valid" *ngIf= "numberForm.invalid && numberForm.touched"> That's <span style="color: #ff0000">Not</span> a valid phone number</p>
     <p class="valid" *ngIf= "numberForm.valid && numberForm.touched"> Click to Send!</p>
