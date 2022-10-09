@@ -8,27 +8,30 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "prepare": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "^4.4.3",
     "@angular/common": "^4.2.4",
     "@angular/compiler": "^4.2.4",
-    "@angular/core": "^4.2.4",
+    "@angular/core": "^11.0.5",
     "@angular/forms": "^4.2.4",
     "@angular/http": "^4.2.4",
     "@angular/platform-browser": "^4.2.4",
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
     "angularfire2": "^4.0.0-rc.2",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^3.4.1",
     "core-js": "^2.4.1",
-    "firebase": "^4.4.0",
-    "firebase-functions": "^0.6.3",
+    "firebase": "^4.5.1",
+    "firebase-functions": "^3.6.2",
     "rxjs": "^5.4.2",
-    "twilio": "^3.7.0",
-    "zone.js": "^0.8.14"
+    "twilio": "^3.31.0",
+    "zone.js": "^0.8.14",
+    "@snyk/protect": "latest"
   },
   "devDependencies": {
     "@angular/cli": "1.4.3",
@@ -50,5 +53,6 @@
     "ts-node": "~3.2.0",
     "tslint": "~5.3.2",
     "typescript": "~2.3.3"
-  }
+  },
+  "snyk": true
 }
