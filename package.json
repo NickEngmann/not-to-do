@@ -27,7 +27,7 @@
     "firebase": "^4.4.0",
     "firebase-functions": "^0.6.3",
     "rxjs": "^5.4.2",
-    "twilio": "^3.7.0",
+    "twilio": "^4.0.0",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
